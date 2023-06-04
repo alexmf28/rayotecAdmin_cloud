@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="mb-2 row">
+        <div class="col-sm-6">
+            <h1>
+                {{ title }}
+            </h1>
+        </div>
+        <div class="col-sm-6" *ngIf="btns">
+
+            <ol class="breadcrumb float-sm-right">
+
+                <ng-template  ngFor let-item [ngForOf]="btns">
+                    
+                    <li class="breadcrumb-item" *ngIf="item['route']">
+                        <a routerLink="{{ item['route'] }}">{{ item['title'] }}</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" *ngIf="!item['route']" aria-current="page">{{ item['title'] }}</li>   
+                </ng-template>
+
+            </ol>
+
+        </div>
+    </div>
+</div>

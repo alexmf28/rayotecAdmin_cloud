@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label [for]="model" class="form-label"> {{ title }} </label>
+
+    <select 
+        [formControl]="model"
+        [id]="model"
+        class="form-control {{ isValid(model) ? '' : 'is-invalid' }}"
+        (change)="onChangeValue(model.value)"
+    >
+        <option value="">-- Seleccionar --</option>
+        <option [value]="item.id" *ngFor="let item of data">
+            {{ item.nombre || item.descripcion }}
+        </option>
+    </select>
+
+    <div id="error" class="invalid-feedback" [hidden]="isValid(model)">
+        <span *ngIf="model.errors?.['required']">
+            El campo {{ title }} es obligatorio
+        </span>
+    </div>
+</div>

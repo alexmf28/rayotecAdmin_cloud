@@ -1,0 +1,146 @@
+<app-header></app-header>
+
+<app-sidebar></app-sidebar>
+
+<div class="content-wrapper">
+    <section class="content pt-2">
+        <section class="content-header">
+            <app-toolbar 
+                title="Proveedores"
+                [btnsClick]="[
+                    {
+                        method:'new',
+                        modal:'#ModalForm',
+                        route:'/producto',
+                        title: 'Añadir',
+                        icon: 'fas fa-plus',
+                        css: 'btn btn-sm btn-default'
+                    }
+                ]" (push)="push($event)"
+            ></app-toolbar>
+        </section>
+    
+        <section class="content-body">
+            <div class="card">     
+                <div class="card-body p-0 m-0 table-responsive">
+                    <table class="table table-sm table-bordered" aria-hidden="true">
+                        <thead>
+                            <tr class="align-middle text-center">
+                                <th id="col" class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    &nbsp;&nbsp;Editar&nbsp;&nbsp;
+                                </th>
+                                <th id="col" class="align-middle text-center p-0 m-0" *ngFor="let column of columns">
+                                    {{ column }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-nowrap text-center text-sm" [hidden]="proveedores.length > 0">
+                                <td class="align-middle text-center text-bold text-lg p-0 m-0" colspan="10">
+                                    No se encontraron proveedores
+                                </td>
+                            </tr>
+                            <tr class="text-nowrap text-center text-sm" *ngFor="let item of proveedores">
+    
+                                <td class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    <button title="Reemplazar/Desactivar" class="btn btn-link btn-sm" (click)="openFormUpdate(item)" data-toggle="modal" [attr.data-target]="'#ModalForm'">
+                                        <i class="fa fa-edit fa-xs" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+    
+                                <td>
+                                    {{ item.id }}
+                                </td>
+                                <td>
+                                    {{ item.nombre }}
+                                </td>
+                                <td>
+                                    {{ item.telefono }}
+                                </td>
+                                <td>
+                                    {{ item.email }}
+                                </td>
+                                <td class="text-{{ item.estado ? 'success' : 'danger' }}">
+                                    {{ item.estado ? 'ACTIVO' : 'INACTIVO'}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>   
+            </div>
+
+            <div class="modal fade" id="ModalForm" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"> {{ title }} </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form [formGroup]="proveedorForm" (ngSubmit)="takeAction()">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="number" 
+                                            title="RUC"
+                                            [model]="get_model('id')"
+                                        ></app-input-text>
+                                    </div>
+                                    <div class="col" [hidden]="action == 'CREATE'">
+                                        <app-input-text 
+                                            typeText="text" 
+                                            title="Razon social"
+                                            [model]="get_model('nombre')"
+                                        ></app-input-text>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="text" 
+                                            title="Correo electronico"
+                                            [model]="get_model('email')"
+                                        ></app-input-text>
+                                    </div>
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="number" 
+                                            title="Telefono"
+                                            [model]="get_model('telefono')"
+                                        ></app-input-text>                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="number" 
+                                            title="Nro.doc (Representante legal)"
+                                            [model]="get_model('nro_doc')"
+                                        ></app-input-text>
+                                    </div>
+                                    <div class="col" [hidden]="action == 'CREATE'">
+                                        <app-input-text 
+                                            typeText="text" 
+                                            title="Nombre y Apellido (Representante legal)"
+                                            [model]="get_model('contacto')"
+                                        ></app-input-text>
+                                    </div>
+                                </div>
+
+                                <app-input-check  title="Estado" [model]="get_model('estado')" [hidden]="action === 'CREATE'"></app-input-check>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" [disabled]="proveedorForm.invalid">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>

@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<app-sidebar></app-sidebar>
+
+<div class="content-wrapper">
+    <section class="content pt-2">
+        <section class="content-header">
+            <app-toolbar 
+                title="Listar Productos"
+                [btns]="[
+                    {
+                        route:'/producto',
+                        title: 'Añadir',
+                        icon: 'fas fa-plus',
+                        css: 'btn btn-sm btn-default'
+                    }
+                ]"
+            ></app-toolbar>
+        </section>
+    
+        <section class="content-body">
+            <div class="card">     
+                <div class="card-body p-0 m-0 table-responsive">
+                    <table class="table table-sm table-bordered" aria-hidden="true">
+                        <thead>
+                            <tr class="align-middle text-center">
+                                <th id="col" class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    &nbsp;&nbsp;Editar&nbsp;&nbsp;
+                                </th>
+                                <th id="col" class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    &nbsp;&nbsp;Imagenes&nbsp;&nbsp;
+                                </th>
+                                <th id="col" class="align-middle text-center p-0 m-0" *ngFor="let column of columns">
+                                    {{ column }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-nowrap text-center text-sm" *ngFor="let item of productos">
+    
+                                <td class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    <button title="Editar" class="btn btn-link btn-sm" [routerLink]="['/producto/', item.id]">
+                                        <i class="fa fa-edit fa-xs" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+
+                                <td class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    <button title="Imagenes" class="btn btn-link btn-sm" [routerLink]="['/producto/imagenes/', item.id]">
+                                        <i class="fa fa-image fa-xs" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+    
+                                <td>
+                                    {{ item.id }}
+                                </td>
+                                <td>
+                                    {{ item.nombre }}
+                                </td>
+                                <td>
+                                    {{ item.garantia }} meses
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>   
+            </div>
+        </section>
+    </section>
+</div>

@@ -1,0 +1,92 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">        
+    <a class="brand-link">
+        <img 
+        src="https://i0.wp.com/rayotec.pe/wp-content/uploads/2022/09/cropped-Logo-2.png?w=789&ssl=1"
+        alt="Rayotec"
+        class="brand-image elevation-3"
+        style="opacity: .8">
+        <span class="brand-text font-weight-light">Rayotec</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar text-sm">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2" aria-labelledby="menu">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+                
+                <li class="nav-item">
+                    <a [routerLink]="['/dashboard']" routerLinkActive="active" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="nav-icon fas fa-warehouse"></i>
+                        <p>
+                            Almacen
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a [routerLink]="['/marcas']" routerLinkActive="active" class="nav-link">
+                                <i class="nav-icon fas fa-tag"></i>
+                                <p>Marcas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['/modelos']" routerLinkActive="active" class="nav-link">
+                                <i class="nav-icon fas fa-tag"></i>
+                                <p>Modelos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a [routerLink]="['/productos']" routerLinkActive="active" class="nav-link">
+                                <i class="nav-icon fas fa-laptop"></i>
+                                <p>Productos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i class="nav-icon fas fa-industry"></i>
+                        <p>
+                            Proveedores
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a [routerLink]="['/proveedores']" routerLinkActive="active" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>Proveedores</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">              
+                                       
+                            <a [routerLink]="['/reparaciones']" routerLinkActive="active" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>Gestionar Reparaciones</p>
+                            </a>                                     
+                </li>
+                <li class="nav-item">              
+                                       
+                    <a [routerLink]="['/ventas']" routerLinkActive="active" class="nav-link">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>Registrar Ventas</p>
+                    </a>                                     
+        </li>
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

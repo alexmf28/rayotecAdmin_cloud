@@ -1,0 +1,45 @@
+<div class="sticky-top">
+    <div class="container-fluid">
+        <div class="mb-2 row">
+
+            <div class="col-sm-3">
+                <h1> {{ title }} </h1>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="btn-toolbar d-flex justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+                    
+                    <div class="btn-group" role="group" aria-label="First group"  *ngIf="btns">
+
+                        <a href="{{ item['route'] }}" class="{{ item['css'] }}" title="{{ item['title'] }}" *ngFor="let item of btns">
+                            <i class="{{ item['icon'] }} pr-1" aria-hidden="true"></i>
+                            {{ item['title'] }}
+                        </a>
+
+                    </div>
+
+                    <div class="btn-group" role="group" aria-label="First group"  *ngIf="btnsClick">
+
+                        <a *ngFor="let item of btnsClick" (click)="onPush(item['method'])"  data-toggle="modal" [attr.data-target]="item['modal']"  class="{{ item['css'] }}" title="{{ item['title'] }}">
+                            <i class="{{ item['icon'] }} pr-1" aria-hidden="true"></i>
+                            {{ item['title'] }}
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- <div  *ngIf="searches">
+                    <div class="input-group ml-2" ngFor="let search of searches">
+                        <input type="text" style="height:30px" class="form-control form-control-sm"
+                            ngModel="search['model']"
+                            value="search['model'].value"
+                            >
+                    </div>
+                </div> -->
+              
+            </div>
+            
+        </div>
+    </div>
+</div>

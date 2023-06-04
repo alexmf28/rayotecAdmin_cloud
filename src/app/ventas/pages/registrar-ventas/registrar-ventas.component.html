@@ -1,0 +1,139 @@
+<app-header></app-header>
+
+<app-sidebar></app-sidebar>
+
+<div class="content-wrapper">
+    <section class="content pt-2">
+        <section class="content-header">
+            <app-toolbar 
+                title="Ventas"
+              
+            ></app-toolbar>
+        </section>
+    
+        <section class="content-body">
+            <div class="card">     
+                <div class="card-body p-0 m-0 table-responsive">
+                    <table class="table table-sm table-bordered" aria-hidden="true">
+                        <thead>
+                            <tr class="align-middle text-center">                              
+                                <th id="col" class="align-middle text-center p-0 m-0" *ngFor="let column of columns">
+                                    {{ column }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-nowrap text-center text-sm" >
+                                <td class="align-middle text-center text-bold text-lg p-0 m-0" colspan="10">
+                                    No se encontraron 
+                                </td>
+                            </tr>
+                            <tr class="text-nowrap text-center text-sm" *ngFor="let item of ventas">
+    
+                                <td class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    <button title="Reemplazar/Desactivar" class="btn btn-link btn-sm"  data-toggle="modal" [attr.data-target]="'#ModalForm'">
+                                        <i class="fa fa-edit fa-xs" aria-hidden="true"></i>
+                                    </button>
+                                </td>                              
+                                <td>
+                                    {{ item.codigoReparacion }}
+                                </td>
+                                <td>
+                                    {{ item.nombreProducto }}
+                                </td>
+                                <td>
+                                    {{ item.descripcionProducto }}
+                                </td>
+                                <td>
+                                    {{ item.cantidad }}
+                                </td>
+                                <td>
+                                    {{ item.precio }}
+                                </td>
+                                <td>
+                                    {{ item.fechaVenta }}
+                                </td>                            
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>   
+            </div>
+
+            <div class="modal fade" id="ModalForm" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"> {{ title }} </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form                                               
+                       
+                        >
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="number" 
+                                            title="Código"
+                                           
+                                        ></app-input-text>
+                                    </div>
+                                    <div class="col" [hidden]="action == ''">
+                                        <app-input-text 
+                                            typeText="text" 
+                                            title="Técnico"
+                                            
+                                        ></app-input-text>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="text" 
+                                            title="Teléfono"
+                                          
+                                        ></app-input-text>
+                                    </div>
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="number" 
+                                            title="Nombre de Cliente"
+                                           
+                                        ></app-input-text>                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="number" 
+                                            title="Fecha de entrada"
+                                            
+                                        ></app-input-text>
+                                    </div>
+                                    <div class="col">
+                                        <app-input-text 
+                                            typeText="text" 
+                                            title="Descripción"
+                                           
+                                        ></app-input-text>
+                                    </div>
+                                </div>
+
+                                <app-input-check  title="Estado"  [hidden]="action === 'CREATE'"></app-input-check>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" [disabled]="">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>

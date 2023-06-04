@@ -1,0 +1,28 @@
+<div class="form-group">
+    <label [for]="model" class="form-label">{{ title }}</label>
+
+    <div class="input-group mb-3">
+        <div class="custom-file" [hidden]="disabled">
+            <input
+                type="file"
+                class="custom-file-input"
+                [id]="model"
+                class="form-control {{ isValid(model) ? '' : 'is-invalid' }}"
+                [accept]="prefixs"
+                aria-describedby="inputGroupFileAddon01"
+                [hidden]="disabled"
+            >
+          <label class="custom-file-label" [for]="model">{{ file != {} ? file : 'Sube un archivo' }}</label>
+        </div>
+        
+        <div id="error" class="invalid-feedback" [hidden]="isValid(model)">
+            <span *ngIf="model.errors?.['required']">
+                El campo {{ title }} es obligatorio.
+            </span>
+  
+            <span  *ngIf="model.errors?.['pattern']">
+                El campo {{ title }} debe seguir el patrón {{ model.errors?.['pattern']?.['requiredPattern'] }}.
+            </span>
+        </div>
+    </div>          
+</div>    

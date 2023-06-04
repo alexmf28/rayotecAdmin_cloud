@@ -1,0 +1,109 @@
+<app-header></app-header>
+
+<app-sidebar></app-sidebar>
+
+<div class="content-wrapper">
+    <section class="content pt-2">
+
+        <section class="content-header">
+            <app-breadcrumb
+                title="Producto {{ idProducto }}"
+                [btns]="[
+                    {
+                        route:'/productos',
+                        title:'Listar Productos'
+                    },
+                    {
+                        title:'Producto'
+                    }
+                ]"
+            ></app-breadcrumb>
+        </section>
+    
+        <section class="content-body">
+            
+            <div class="card">
+                <form [formGroup]="producto_form" (ngSubmit)="take_action()" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <app-input-text 
+                                    typeText="text" 
+                                    title="Nombre"
+                                    [model]="get_model('nombre')"
+                                ></app-input-text>
+                            </div>
+                            <div class="col">
+                                <app-input-text 
+                                    typeText="number" 
+                                    title="Garantia (meses)"
+                                    [model]="get_model('garantia')"
+                                ></app-input-text>
+                            </div>
+                            <div class="col">
+                                <app-input-text
+                                    typeText="number" 
+                                    title="Precio (soles)"
+                                    [model]="get_model('precio')"
+                                ></app-input-text>
+                            </div>
+                            <div class="col" *ngIf="action == 'UPDATE'">
+                                <app-input-text
+                                    typeText="text" 
+                                    title="Cantidad"
+                                    [model]="get_model('cantidad')"
+                                ></app-input-text>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <app-input-select
+                                    title="Marcas"
+                                    [data]="marcas"
+                                    [model]="get_model('id_marca')"
+                                ></app-input-select>
+                            </div>
+                            <div class="col">
+                                <app-input-select
+                                    title="Categoria"
+                                    [data]="categorias"
+                                    [model]="get_model('id_categoria')"
+                                ></app-input-select>
+                            </div>
+                            <div class="col">
+                                <app-input-select
+                                    title="Modelo"
+                                    [data]="modelos"
+                                    [model]="get_model('id_modelo')"
+                                ></app-input-select>
+                            </div>
+                            <div class="col">
+                                <app-input-select
+                                    title="Estado"
+                                    [data]="estados_productos"
+                                    [model]="get_model('id_estado')"
+                                ></app-input-select>
+                            </div>
+                            <div class="col">
+                                <app-input-file
+                                    title="Imagen Principal"
+                                    [model]="get_model('path')"
+                                    [file]="localPath?.['name']"
+                                    (change)="changeFile($event)"
+                                ></app-input-file>            
+                            </div>
+                         
+                        </div>
+                        <app-input-text-area
+                            title="Descripcion"
+                            [model]="get_model('descripcion')"
+                        ></app-input-text-area>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-default" [disabled]="producto_form.invalid || (action === 'CREATE' && localPath == null)">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+</div>

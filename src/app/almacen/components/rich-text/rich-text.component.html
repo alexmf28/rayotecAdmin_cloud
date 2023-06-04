@@ -1,0 +1,42 @@
+<div >   
+    <label [for]="model"> {{ title }} </label>
+ 
+    <angular-editor  [formControl]="model" [config]="config" class="{{ isValid(model) ? '' : 'is-invalid' }}"></angular-editor>
+
+    <div id="error" class="invalid-feedback" [hidden]="isValid(model)">
+
+        <span *ngIf="model.errors?.['required']">
+            El campo {{ title }} es obligatorio.
+        </span>
+
+        <span *ngIf="model.errors?.['email']">
+            El campo {{ title }} debe tener formato de correo electronico.
+        </span>
+       
+        <span *ngIf="model.errors?.['max']">
+            El campo {{ title }} debe ser menor o igual a {{ model.errors?.['max']?.['max'] }}.
+        </span>
+    
+        <span *ngIf="model.errors?.['maxlength']">
+            El campo {{ title }} debe tener maximo {{ model.errors?.['maxlength']?.['requiredLength'] }} caracteres o digitos.
+        </span>
+    
+        <span *ngIf="model.errors?.['min']">
+            El campo {{ title }} debe ser mayor o igual a {{ model.errors?.['min']?.['min'] }}.
+        </span>
+   
+        <span *ngIf="model.errors?.['minlength']">
+            El campo {{ title }} debe tener minimo {{ model.errors?.['minlength']?.['requiredLength'] }} caracteres o digitos.
+        </span>
+
+        <span  *ngIf="model.errors?.['pattern']">
+            El campo {{ title }} debe seguir el patrón {{ model.errors?.['pattern']?.['requiredPattern'] }}.
+        </span>
+
+    </div>
+
+    
+</div>
+
+
+

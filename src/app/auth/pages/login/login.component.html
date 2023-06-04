@@ -1,0 +1,57 @@
+<div class="login-page" style="min-height: 496.781px;">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Rayotec</b>APP
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">        
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <!-- <div class="input-group mb-3">
+                        <input
+                            type="email"
+                            class="form-control {{ getControl('email').valid || getControl('email').pristine ? '' : 'is-invalid' }}"
+                            placeholder="Correo electrónico"
+                            aria-describedby="error"
+                            name="email"
+                            [formControl]="getControl('email')"
+                        >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                        <div id="error" class="invalid-feedback" [hidden]="getControl('email').valid || getControl('email').pristine">
+                            El campo correo electrónico es obligatorio
+                        </div> 
+                    </div> -->
+
+                    <!-- <div class="input-group mb-3">
+                        <input
+                            type="password"
+                            class="form-control {{ password.valid || password.pristine ? '' : 'is-invalid' }}"
+                            placeholder="Contraseña"
+                            name="password"
+                            required
+                        >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                        <div id="error" class="invalid-feedback" [hidden]="password.valid || password.pristine">
+                            El campo contraseña es obligatorio
+                        </div>
+                    </div> -->
+<!-- [disabled]="loginForm.invalid || bloqueo"  -->
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary btn-block" >
+                                Autenticarse
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

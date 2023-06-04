@@ -1,0 +1,83 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="content-wrapper">
+    <section class="content pt-2">
+        <section class="content-header">
+            <app-toolbar title="Marcas"
+            [btnsClick]="[
+                {
+                    method: 'new',
+                    modal: '#ModalForm',
+                    title: 'Añadir',
+                    icon: 'fas fa-plus',
+                    css: 'btn btn-default btn-sm'
+                }
+            ]" (push)="push($event)"></app-toolbar>
+        </section>
+    
+        <section class="content-body">
+            <div class="card">
+       
+                <div class="card-body p-0 m-0 table-responsive">
+                    <table class="table table-sm table-bordered" aria-hidden="true">
+                        <thead>
+                            <tr class="align-middle text-center">
+                                <th id="col" class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    &nbsp;&nbsp;Editar&nbsp;&nbsp;
+                                </th>
+                                <th id="col" class="align-middle text-center p-0 m-0" *ngFor="let column of columns">
+                                    {{ column }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-nowrap text-center text-sm" *ngFor="let item of marcas">
+    
+                                <td class="align-middle text-center p-0 m-0" style="width: 50px">
+                                    <button title="Reemplazar/Desactivar" class="btn btn-link btn-sm" (click)="openFormUpdate(item)" data-toggle="modal" [attr.data-target]="'#ModalForm'" >
+                                        <i class="fa fa-edit fa-xs" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+    
+                                <td>
+                                    {{ item.id }}
+                                </td>
+                                <td>
+                                    {{ item.nombre }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>   
+            </div>
+         
+            <div class="modal fade" id="ModalForm" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"> {{ title }} </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form [formGroup]="marcaForm" (ngSubmit)="takeAction()">
+                            <div class="modal-body">
+                                <app-input-text 
+                                    typeText="text" 
+                                    title="Nombre"
+                                    [model]="get_model('nombre')"
+                                ></app-input-text>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" [disabled]="marcaForm.invalid">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    
+        </section>
+    </section>
+</div>
