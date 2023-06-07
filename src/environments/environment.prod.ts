@@ -8,5 +8,6 @@ export const environment = {
     authDomain: 'rayotec-f7adc.firebaseapp.com',
     messagingSenderId: '931030260389',
   },
-  production: true
+  production: true,
+  dominio:'https://rayotec.up.railway.app'
 };

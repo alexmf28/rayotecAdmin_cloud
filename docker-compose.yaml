@@ -1,0 +1,8 @@
+version: '3.4'
+
+services: 
+  rayotecAdmin_cloud:
+    image: rayotecAdmin_cloud
+    build: .
+    ports:
+      -8081:80
