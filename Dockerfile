@@ -1,4 +1,4 @@
-FROM node:12.16.1-alpine as angular
+FROM node:12.20-alpine as angular
 WORKDIR /app   
 
 COPY package.json /app/package.json
