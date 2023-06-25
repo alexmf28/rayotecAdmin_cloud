@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## docker
+
+npm i
+npm run build
+docker build -t rayotec_admin .
+docker build -t alexismf2/rayotec_admin .
+docker push alexismf2/rayotec_admin 
+docker login -u alexismf2
+docker push alexismf2/rayotec_admin
